@@ -16,4 +16,22 @@ export function generateStars(input) {
   }
 }
 
+export function getUserRating(nodeList) {
+    let rating = 0;
+    nodeList = Array.from(nodeList);
+  
+    function removeClassed() {
+      nodeList.forEach(star => star.classList.remove("fa-solid"));
+    }
+  
+    nodeList.forEach((star, index) => {
+      star.addEventListener("click", () => {
+        removeClassed();
+        nodeList.slice(0, index + 1).forEach(star => star.classList.add("fa-solid"));
+        rating = index + 1;
+      });
+    });
+  }
+  
+
 
